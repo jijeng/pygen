@@ -33,7 +33,7 @@ class pygen():
             print("Not found txt file...")
             context = ssl._create_unverified_context()
             moves.urllib.request.urlretrieve(
-                "https://raw.githubusercontent.com/tflearn/tflearn.github.io/master/resources/US_Cities.txt", path)
+                "https://raw.githubusercontent.com/jijeng/pygen/master/China_Cities.txt?token=AF5S62H2SZJN5BFH2TN6LTK4X4P72", path)
 
         city_list = []
         with open(path) as fh:
@@ -53,7 +53,7 @@ class pygen():
             print("Not found txt file...")
             context = ssl._create_unverified_context()
             moves.urllib.request.urlretrieve(
-                "https://raw.githubusercontent.com/tflearn/tflearn.github.io/master/resources/US_Cities.txt", path)
+                "https://raw.githubusercontent.com/jijeng/pygen/master/Mails.txt?token=AF5S62FCCO2DG4TJMOFYNPC4X4QII", path)
 
         domain_list = []
         with open(path) as fh:
@@ -72,7 +72,7 @@ class pygen():
             print("Not found txt file...")
             context = ssl._create_unverified_context()
             moves.urllib.request.urlretrieve(
-                "https://raw.githubusercontent.com/tflearn/tflearn.github.io/master/resources/US_Cities.txt", path)
+                "https://raw.githubusercontent.com/jijeng/pygen/master/last_name.txt?token=AF5S62EG7HYFRC5WORYP6SS4X4QLE", path)
 
         lastname =[]
         with open(path) as fh:
@@ -90,7 +90,7 @@ class pygen():
             print("Not found txt file...")
             context = ssl._create_unverified_context()
             moves.urllib.request.urlretrieve(
-                "https://raw.githubusercontent.com/tflearn/tflearn.github.io/master/resources/US_Cities.txt", path)
+                "https://raw.githubusercontent.com/jijeng/pygen/master/first_name.txt?token=AF5S62EAXNA627QXQEXQTYC4X4QOE", path)
 
         first_name = []
         with open(path) as fh:
