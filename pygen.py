@@ -11,7 +11,7 @@ class pygen():
         """
         from faker import Faker
         import pandas as pd
-        from random import randint,choice
+        from random import randint, choice
 
         self.fake = Faker()
         self.seed = seed
@@ -19,21 +19,21 @@ class pygen():
 
         self.city_list = self._initialize_city_list()
         self.domain_list = self._initialize_email_domain_list()
-        self.firstname_list =self._initialize_firstname_list()
-        self.lastname_list =self._initialize_lastname_list()
-
+        self.firstname_list = self._initialize_firstname_list()
+        self.lastname_list = self._initialize_lastname_list()
 
     def _initialize_city_list(self):
         import os
         from six import moves
         import ssl
 
-        path = "China_Cities.txt"
+        path = "data/China_Cities.txt"
         if not os.path.isfile(path):
             print("Not found txt file...")
             context = ssl._create_unverified_context()
             moves.urllib.request.urlretrieve(
-                "https://raw.githubusercontent.com/jijeng/pygen/master/China_Cities.txt?token=AF5S62H2SZJN5BFH2TN6LTK4X4P72", path)
+                "https://raw.githubusercontent.com/jijeng/pygen/master/China_Cities.txt?token=AF5S62H2SZJN5BFH2TN6LTK4X4P72",
+                path)
 
         city_list = []
         with open(path) as fh:
@@ -47,36 +47,39 @@ class pygen():
         import ssl
 
         dir_path = os.path.dirname('./')
-        path = dir_path + os.sep + "Mails.txt"
+        path = dir_path + os.sep + "data/Mails.txt"
 
         if not os.path.isfile(path):
             print("Not found txt file...")
             context = ssl._create_unverified_context()
             moves.urllib.request.urlretrieve(
-                "https://raw.githubusercontent.com/jijeng/pygen/master/Mails.txt?token=AF5S62FCCO2DG4TJMOFYNPC4X4QII", path)
+                "https://raw.githubusercontent.com/jijeng/pygen/master/Mails.txt?token=AF5S62FCCO2DG4TJMOFYNPC4X4QII",
+                path)
 
         domain_list = []
         with open(path) as fh:
             domain_list = [str(line).strip() for line in fh.readlines()]
 
         return domain_list
+
     def _initialize_lastname_list(self):
         import os
         from six import moves
         import ssl
 
-        dir_path =os.path.dirname('./')
-        path =dir_path+os.sep +'last_name.txt'
+        dir_path = os.path.dirname('./')
+        path = dir_path + os.sep + 'data/last_name.txt'
 
         if not os.path.isfile(path):
             print("Not found txt file...")
             context = ssl._create_unverified_context()
             moves.urllib.request.urlretrieve(
-                "https://raw.githubusercontent.com/jijeng/pygen/master/last_name.txt?token=AF5S62EG7HYFRC5WORYP6SS4X4QLE", path)
+                "https://raw.githubusercontent.com/jijeng/pygen/master/last_name.txt?token=AF5S62EG7HYFRC5WORYP6SS4X4QLE",
+                path)
 
-        lastname =[]
+        lastname = []
         with open(path) as fh:
-            lastname =[ str(line).strip() for line in fh.readlines()]
+            lastname = [str(line).strip() for line in fh.readlines()]
         return lastname
 
     def _initialize_firstname_list(self):
@@ -85,12 +88,13 @@ class pygen():
         import ssl
 
         dir_path = os.path.dirname('./')
-        path = dir_path + os.sep + 'first_name.txt'
+        path = dir_path + os.sep + 'data/first_name.txt'
         if not os.path.isfile(path):
             print("Not found txt file...")
             context = ssl._create_unverified_context()
             moves.urllib.request.urlretrieve(
-                "https://raw.githubusercontent.com/jijeng/pygen/master/first_name.txt?token=AF5S62EAXNA627QXQEXQTYC4X4QOE", path)
+                "https://raw.githubusercontent.com/jijeng/pygen/master/first_name.txt?token=AF5S62EAXNA627QXQEXQTYC4X4QOE",
+                path)
 
         first_name = []
         with open(path) as fh:
@@ -106,29 +110,27 @@ class pygen():
         from six import moves
         import ssl
         import random
-        from random import randint,choice
+        from random import randint, choice
         random.seed(self.seed)
 
         return (choice(self.city_list))
 
-
-    def _name(self, seed =None):
+    def _name(self, seed=None):
         '''
         :param seed: not used
         :return: first_name + last_name in chinese
         '''
         import random
-        from random import  choice
+        from random import choice
         random.seed(self.seed)
-        return choice(self.lastname_list)+"\t"+choice(self.firstname_list)
+        return choice(self.lastname_list) + "\t" + choice(self.firstname_list)
 
     def name(self, seed=None):
 
-        return_name =self._name(seed =seed)
-        return_name= return_name.split("\t")
-        if len(return_name)==2:
-            return return_name[0]+return_name[1]
-
+        return_name = self._name(seed=seed)
+        return_name = return_name.split("\t")
+        if len(return_name) == 2:
+            return return_name[0] + return_name[1]
 
     def realistic_email(self, name, seed=None):
         '''
@@ -138,7 +140,7 @@ class pygen():
         giving name, get the mail
         '''
         import random
-        from random import randint,choice
+        from random import randint, choice
         random.seed(self.seed)
 
         name = str(name)
@@ -166,7 +168,6 @@ class pygen():
 
         return email
 
-
     def simple_ph_num(self, seed=None, types=0, format=False):
         """
         Generates 11 digit China phone number in xxx-xxxx-xxxx format
@@ -175,9 +176,8 @@ class pygen():
         format: 是否按照 xxx-xxxx-xxxx format 格式输出
         """
         import random
-        from random import randint,choice
+        from random import randint, choice
         random.seed(self.seed)
-
 
         list1 = [134, 135, 136, 137, 138, 139, 147, 148, 150, 151, 152, 157, 158, 159, 178, 182, 183, 184, 187, 188,
                  198, 1440, 1703, 1705, 1706]
@@ -219,7 +219,6 @@ class pygen():
 
         return result
 
-
     def get_check_digit(self, id_number):
         """通过身份证号获取校验码"""
         check_sum = 0
@@ -228,17 +227,14 @@ class pygen():
         check_digit = (12 - (check_sum % 11)) % 11
         return check_digit if check_digit < 10 else 'X'
 
-
     def generate_id(self, sex=None):
         """随机生成身份证号，sex = 0表示女性，sex = 1表示男性"""
         import random
-        from datetime  import datetime, timedelta
+        from datetime import datetime, timedelta
         import constant as const
 
         if sex == None:
-
             sex = random.choice([0, 1])
-
 
         # 随机生成一个区域码(6位数)
         id_number = str(random.choice(list(const.AREA_INFO.keys())))
@@ -255,12 +251,11 @@ class pygen():
 
         return id_number
 
-
     def verify_id(self, id_number):
         """校验身份证是否正确"""
         import re
         import constant as const
-        
+
         if re.match(const.ID_NUMBER_18_REGEX, id_number):
             # check_digit = cls(id_number).get_check_digit()
             check_digit = self.get_check_digit(id_number)
@@ -280,9 +275,8 @@ class pygen():
         seed: Currently not used. Uses seed from the pydb class if chosen by user
         """
         import random
-        from random import randint,choice
+        from random import randint, choice
         random.seed(self.seed)
-        
 
         if not style:
             style = choice([1, 2, 3])
@@ -390,7 +384,6 @@ class pygen():
         if num_cols < 0:
             raise ValueError("Please provide at least one type of data field to be generated")
 
-
     def gen_dataframe(self, num=10, fields=['name'], real_email=True, real_city=True, phone_simple=True, seed=None):
         import pandas as pd
         """
@@ -417,40 +410,36 @@ class pygen():
         df = pd.DataFrame(data=self.gen_data_series(num, data_type=fields[0]), columns=[fields[0]])
 
         if 'name' in fields and 'ssn' in fields:
-            name_list =[self._name()  for _ in range(num)]
-            
-            firstname_list =[name.split('\t')[-1] for name in name_list]
+            name_list = [self._name() for _ in range(num)]
+
+            firstname_list = [name.split('\t')[-1] for name in name_list]
             lastname_list = [name.split('\t')[0] for name in name_list]
             name_list1 = [l + f for (l, f) in zip(lastname_list, firstname_list)]
 
-
             import namesex
-            ns =namesex.namesex()
-            gender_list =ns.predict(firstname_list)
-
+            ns = namesex.namesex()
+            gender_list = ns.predict(firstname_list)
 
             ssn_list = [self.generate_id(sex=gender) for gender in gender_list]
-            dict1 ={'name':name_list1, 'ssn':ssn_list}
+            dict1 = {'name': name_list1, 'ssn': ssn_list}
 
-            df['name']=dict1['name']
-            df['ssn'] =dict1['ssn']
+            df['name'] = dict1['name']
+            df['ssn'] = dict1['ssn']
 
             # add email to dataframe
             if 'email' in fields and real_email:
-
                 from xpinyin import Pinyin
-                p =Pinyin()
-                f_pin_list =[p.get_pinyin(name) for name in firstname_list]
-                l_pin_list =[p.get_pinyin(name) for name in lastname_list]
+                p = Pinyin()
+                f_pin_list = [p.get_pinyin(name) for name in firstname_list]
+                l_pin_list = [p.get_pinyin(name) for name in lastname_list]
                 name_list2 = [f + " " + l for (l, f) in zip(l_pin_list, f_pin_list)]
                 mail_list = [self.realistic_email(name) for name in name_list2]
-                df['mail'] =mail_list
+                df['mail'] = mail_list
 
                 fields.remove('email')
 
             fields.remove('name')
             fields.remove('ssn')
-
 
         for col in fields:
 
@@ -593,7 +582,7 @@ class pygen():
         temp_df.to_excel(filename)
 
     def gen_csv(self, num=10, fields=['name'], filename='NewExcel.csv', real_email=True, real_city=True,
-                  phone_simple=True, seed=None):
+                phone_simple=True, seed=None):
         """
         Attempts to create an Excel file using Pandas excel_writer function.
         User can specify various data types to be included as fields.
@@ -605,5 +594,5 @@ class pygen():
         temp_df = self.gen_dataframe(
             num=num, fields=fields, real_email=real_email, real_city=real_city, phone_simple=phone_simple)
         # Use the dataframe to write to an Excel file using Pandas built-in function
-        temp_df.to_csv(filename, sep='\t', encoding ='utf-8')
+        temp_df.to_csv(filename, sep='\t', encoding='utf-8')
 
