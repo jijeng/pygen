@@ -44,7 +44,7 @@ db.gen_csv(filename =filename, fields =['name', 'ssn', 'phone', 'email'])
 db =pygen()
 ```
 
-[更多信息：](https://jijeng.github.io/2019/04/24/pygen/)
+[更多详细用法介绍请参见我的blog：](https://jijeng.github.io/2019/04/24/pygen/)
 
 ## ToDo
 
